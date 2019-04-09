@@ -1,0 +1,19 @@
+#+TITLE: CS4471 Project 3
+
+* Build Instructions
+In order to built the host, virus, and seed run `make` or `make all`. To delete
+these files run `make clean`.
+
+*
+
+* Mutation Approach
+My virus uses encryption to mutate. With each propagation a new key is
+generated and stored in the binary. The encryption and decryption is handled
+by the decrypt.c program which is appended to the start of each file the
+virus has infected. This has the benefit of hiding our virus without
+modifying it's source code but has the downside of creating a new piece of
+code that is repeated and could potentially be detected. Also, decrypt.c
+requires many similar functions to virus.c, but decrypt.c would lack any
+malicious logic in the real world.
+
+| decrypt | separator1 | key | encrypted virus | separator2 | host |
